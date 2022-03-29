@@ -46,8 +46,7 @@ Response
 }
 ```
 
-## Local development
-
+## How to run the application
 You can start up the project with `make` or directly with `docker compose`
 ```sh
 make
@@ -57,10 +56,11 @@ or
 docker-compose up pizza-ordering-server pizza-ordering-worker
 ```
 
-That will initialize the localstack container, server container and worker container.
+That will initialize the localstack container, a server container and a worker container.
 
 
-AWS CLI commands for interacting with the localstack infrastructure.
+## How to interact with the Localstack infrastructure
+AWS CLI commands
 ```bash
 
 # See order entries in dynamo
@@ -69,7 +69,7 @@ aws dynamodb scan --table-name pizza-ordering-dev --endpoint http://localhost:45
 # See order event files in s3
  aws s3 ls s3://order-events --recursive --endpoint http://localhost:4566  --region us-east-1
 
-# Get object from s3
+# Get object from s3 (Just change the object key)
 aws s3api get-object --bucket order-events --key OBJECT_KEY output.txt --endpoint http://localhost:4566  --region us-east-1
 ```
 
@@ -77,3 +77,15 @@ See available localstack services
 ```sh
 docker exec localstack bin/localstack status services
 ```
+
+## Important files
+
+- [docker-compose.yml](docker-compose.yml): Where the localstack container configuration is. It has definitions like which AWS services will be started, on which port, etc.
+- [scripts/localstack/create-resources.sh](scripts/localstack/create-resources.sh): That's the initialization script which will be executed right after the localstack container starts. We generally use that for creating the AWS resources we need locally when initializing the application.
+- [.env.example](.env.example): The environment variables available at runtime. We can see here that each AWS service is pointing to the localstack endpoint. For production, these would be either null or actual VPC endpoints.
+- [src/data-sources](src/data-sources): Our clients to connect to AWS services. We can see here how easily you can pass an endpoint to each client, and have them working with localstack.
+    - [Dynamo](src/data-sources/dynamodb.js)
+    - [Firehose](src/data-sources/firehose.js)
+    - [S3](src/data-sources/s3.js)
+    - [SQS](src/data-sources/sqs.js)
+    - [SSM](src/data-sources/ssm.js)
