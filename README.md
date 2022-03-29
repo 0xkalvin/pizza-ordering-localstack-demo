@@ -60,7 +60,10 @@ That will initialize the localstack container, a server container and a worker c
 
 
 ## How to interact with the Localstack infrastructure
-AWS CLI commands
+
+Essentially, we can use the same AWS CLI commands as we already know, but just adding `--endpoint http://localhost:4566 ` to it.
+
+Here are some examples:
 ```bash
 
 # See order entries in dynamo
