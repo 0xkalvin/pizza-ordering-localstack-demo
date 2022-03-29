@@ -1,0 +1,27 @@
+{
+  "name": "localstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard --fix .",
+    "start:server": "nodemon src/transporters/server/entrypoint.js",
+    "start:worker": "nodemon src/transporters/worker/entrypoint.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.56.0",
+    "@aws-sdk/util-dynamodb": "^3.56.0",
+    "aws-sdk": "^2.1100.0",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "pino": "^7.9.2",
+    "sqs-poller": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "standard": "^16.0.4"
+  }
+}

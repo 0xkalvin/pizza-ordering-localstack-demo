@@ -1,0 +1,20 @@
+{
+  "DeliveryStreamName": "order-events-stream-dev",
+  "DeliveryStreamType": "DirectPut",
+  "S3DestinationConfiguration": {
+    "RoleARN": "arn:aws:iam::000000000000:role/super-role",
+    "BucketARN": "arn:aws:s3:::order-events",
+    "Prefix": "test-log",
+    "ErrorOutputPrefix": "test-error-log",
+    "BufferingHints": {
+      "SizeInMBs": 1,
+      "IntervalInSeconds": 60
+    },
+    "CompressionFormat": "UNCOMPRESSED",
+    "CloudWatchLoggingOptions": {
+      "Enabled": false,
+      "LogGroupName": "",
+      "LogStreamName": ""
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "pizza-ordering-dev": [
+    {
+      "PutRequest": {
+        "Item": {
+          "pk": {
+            "S": "pepperoni"
+          },
+          "sk": {
+            "S": "PIZZA"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "pk": {
+            "S": "margherita"
+          },
+          "sk": {
+            "S": "PIZZA"
+          }
+        }
+      }
+    }
+  ]
+}
