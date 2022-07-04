@@ -2,6 +2,16 @@
 
 This repo contains a Node.JS application for a talk on how to leverage Localstack in your development environment. The application is a dummy pizza ordering system that uses as much AWS services as possible.
 
+
+## How to run locally
+
+```sh
+# Start up the localstack
+make infra
+# and then the application
+make
+```
+
 ## Architecture overview
 
 - Order pizza flow

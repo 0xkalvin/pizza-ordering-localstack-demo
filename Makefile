@@ -3,13 +3,13 @@
 default: infra all
 
 build:
-	@docker-compose build --no-cache
+	@docker compose build --no-cache
 
 all:
-	@docker-compose up pizza-ordering-server pizza-ordering-worker
+	@docker compose up pizza-ordering-server pizza-ordering-worker
 
 infra:
-	@docker-compose up -d localstack
+	@docker compose up -d localstack
 
 down:
-	@docker-compose down --rmi local --remove-orphans
+	@docker compose down --rmi local --remove-orphans
